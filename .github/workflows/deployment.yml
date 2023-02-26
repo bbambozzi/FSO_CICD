@@ -1,0 +1,27 @@
+name: deployment pipeline
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches: [master, main]
+    types: [opened, synchronize]
+jobs:
+  deployment_pipeline:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: npm install
+        run: npm install
+      - name: lint
+        run: npm run lint
+      - name: e2e tests
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm start
+          wait-on: http://localhost:3000

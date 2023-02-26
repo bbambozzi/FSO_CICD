@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.main-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+}
+
+.todo-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vh;
+}
